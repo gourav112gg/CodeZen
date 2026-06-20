@@ -1,0 +1,6 @@
+{
+  "name": "Codezen",
+  "description": "Codezen is a state-of-the-art developer ecosystem and innovation network at Maharaja Agrasen Institute of Technology (MAIT). Features a premium Learning Hub with built-in sandbox compiler, dynamic events schedules, project showcases, verifiable cryptographic certificates, and live community leaderboards.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

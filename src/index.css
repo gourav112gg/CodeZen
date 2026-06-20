@@ -1,0 +1,554 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;605;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Geist", "Inter", sans-serif;
+
+  /* Neutrals: Obsidian Gray scale */
+  --color-slate-50: #fcfcfd;
+  --color-slate-100: #e4e1e9;
+  --color-slate-200: #c7c4d7;
+  --color-slate-300: #a9a8ba;
+  --color-slate-400: #908fa0;
+  --color-slate-500: #767586;
+  --color-slate-600: #5d5c6c;
+  --color-slate-700: #464554;
+  --color-slate-800: #2a292f;
+  --color-slate-900: #1f1f25;
+  --color-slate-950: #131318;
+
+  /* Primary Accent: Electric Indigo */
+  --color-primary: #c0c1ff;
+  --color-indigo-50: #f4f4ff;
+  --color-indigo-100: #e1e0ff;
+  --color-indigo-200: #c0c1ff;
+  --color-indigo-400: #c0c1ff;
+  --color-indigo-500: #8083ff;
+  --color-indigo-600: #494bd6;
+  --color-indigo-700: #2f2ebe;
+  --color-indigo-900: #0d0096;
+  --color-indigo-950: #07006c;
+
+  /* Secondary Accent: Emerald */
+  --color-emerald-50: #e6fdf3;
+  --color-emerald-100: #6ffbbe;
+  --color-emerald-300: #4edea3;
+  --color-emerald-400: #4edea3;
+  --color-emerald-500: #00a572;
+  --color-emerald-600: #00875c;
+  --color-emerald-700: #005236;
+  --color-emerald-800: #003824;
+  --color-emerald-950: #002113;
+
+  /* Tertiary Accent: Cyan */
+  --color-cyan-100: #acedff;
+  --color-cyan-300: #4cd7f6;
+  --color-cyan-400: #4cd7f6;
+  --color-cyan-500: #009eb9;
+  --color-cyan-600: #007c92;
+  --color-cyan-700: #004e5c;
+  --color-cyan-950: #001f26;
+
+  /* Border radii standard overrides */
+  --radius-sm: 0.125rem;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px;
+  --radius-3xl: 8px;
+
+  /* Custom Elevation labels */
+  --color-surface-dim: #131318;
+  --color-surface-bright: #39383e;
+  --color-surface-container-lowest: #0e0e13;
+  --color-surface-container-low: #1b1b20;
+  --color-surface-container: #1f1f25;
+  --color-surface-container-high: #2a292f;
+  --color-surface-container-highest: #35343a;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Glassmorphism Bezel-Glow card as instructed in specs */
+.premium-card {
+  background: radial-gradient(circle at top left, rgba(192, 193, 255, 0.03) 0%, rgba(19, 19, 24, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* 1px solid white/0.08 edge */
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+/* Bezel premium top line effect */
+.premium-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* High-contrast design items list hovers */
+.premium-list-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+.premium-list-item:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Custom Scrollbar for Void aesthetic */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e13;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a292f;
+  border-radius: 2.5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #464554;
+}
+
+/* HIGH-FIDELITY PREMIUM LIGHT THEME MAPPINGS */
+:root.light-theme {
+  --color-slate-950: #f8fafc; /* light canvas background */
+  --color-slate-900: #ffffff; /* light card & nav container background */
+  --color-slate-850: #f1f5f9; /* card auxiliary background / secondary dividers */
+  --color-slate-800: #e2e8f0; /* light slate borders */
+  --color-slate-700: #cbd5e1; /* secondary borders */
+  --color-slate-600: #94a3b8; /* auxiliary gray */
+  --color-slate-500: #64748b; /* body secondary */
+  --color-slate-400: #475569; /* darker slate body text */
+  --color-slate-300: #334155; /* deep slate heading text */
+  --color-slate-200: #1e293b; /* crisp charcoal text */
+  --color-slate-100: #0f172a; /* maximum bold charcoal text */
+  --color-slate-50: #090d16;  /* pure deep charcoal text */
+
+  --color-surface-dim: #f1f5f9;
+  --color-surface-container: #ffffff;
+  --color-surface-container-low: #f8fafc;
+  --color-surface-container-high: #cbd5e1;
+
+  --color-indigo-400: #4f46e5;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4338ca;
+  --color-indigo-300: #4f46e5;
+
+  --color-emerald-400: #00875c;
+  --color-emerald-500: #00a572;
+  --color-emerald-600: #005236;
+  --color-emerald-300: #00875c;
+  
+  --color-cyan-400: #007c92;
+  --color-cyan-500: #009eb9;
+  
+  --color-amber-400: #b45309;
+  --color-amber-500: #d97706;
+
+  --color-rose-400: #be123c;
+  --color-rose-500: #e11d48;
+}
+
+/* Base Light Theme defaults */
+:root.light-theme {
+  background-color: #f8fafc !important;
+  color: #1e293b !important;
+}
+
+:root.light-theme h1,
+:root.light-theme h2,
+:root.light-theme h3,
+:root.light-theme h4,
+:root.light-theme h5,
+:root.light-theme h6 {
+  color: #0f172a !important;
+}
+
+/* Ensure rich and accessible colors for text variables */
+:root.light-theme .text-white { color: #0f172a !important; }
+:root.light-theme .text-slate-50 { color: #090d16 !important; }
+:root.light-theme .text-slate-100 { color: #0f172a !important; }
+:root.light-theme .text-slate-200 { color: #1e293b !important; }
+:root.light-theme .text-slate-300 { color: #334155 !important; }
+:root.light-theme .text-slate-400 { color: #475569 !important; }
+:root.light-theme .text-slate-500 { color: #5d5c6c !important; }
+:root.light-theme .text-slate-600 { color: #64748b !important; }
+:root.light-theme .text-slate-700 { color: #94a3b8 !important; }
+
+/* Keep specific badges, CTAs and standard buttons white-texted when they are solid dark blocks */
+:root.light-theme .badge-dark,
+:root.light-theme button.bg-slate-950,
+:root.light-theme button.bg-slate-900,
+:root.light-theme button.bg-gradient-to-r,
+:root.light-theme button.bg-emerald-500,
+:root.light-theme button.bg-indigo-600,
+:root.light-theme button.bg-indigo-500,
+:root.light-theme #header-join-club-btn,
+:root.light-theme #mobile-join-club-btn,
+:root.light-theme #join-club-form button[type="submit"],
+:root.light-theme .bg-gradient-to-r button,
+:root.light-theme .bg-emerald-500 button,
+:root.light-theme .bg-indigo-600 button,
+:root.light-theme .bg-emerald-500 .text-white,
+:root.light-theme .bg-indigo-600 .text-white,
+:root.light-theme .bg-rose-500 .text-white,
+:root.light-theme .bg-red-500 .text-white,
+:root.light-theme .bg-cyan-600 .text-white,
+:root.light-theme .bg-slate-950 button,
+:root.light-theme .bg-slate-900 button,
+:root.light-theme button.bg-slate-950 .text-white,
+:root.light-theme button.bg-slate-900 .text-white,
+:root.light-theme button.bg-indigo-600 .text-white,
+:root.light-theme button.bg-emerald-600 .text-white,
+:root.light-theme button.bg-indigo-500 .text-white,
+:root.light-theme button.bg-emerald-500 .text-white {
+  color: #ffffff !important;
+}
+
+/* Ensure color utilities scale to elegant light mode contrast ratios */
+:root.light-theme .text-indigo-300,
+:root.light-theme .text-indigo-400,
+:root.light-theme .text-indigo-500 {
+  color: #4f46e5 !important;
+}
+:root.light-theme .text-teal-400,
+:root.light-theme .text-emerald-400,
+:root.light-theme .text-emerald-500 {
+  color: #00875c !important;
+}
+:root.light-theme .text-cyan-400,
+:root.light-theme .text-cyan-500 {
+  color: #007c92 !important;
+}
+:root.light-theme .text-amber-400,
+:root.light-theme .text-amber-500 {
+  color: #b45309 !important;
+}
+:root.light-theme .text-rose-450,
+:root.light-theme .text-rose-400,
+:root.light-theme .text-rose-500 {
+  color: #be123c !important;
+}
+
+/* Absolute Global Layer overrides: Force dark panels to white/off-whites in light-theme */
+:root.light-theme .bg-slate-950 {
+  background-color: #f8fafc !important; /* overall light canvas */
+}
+:root.light-theme .bg-slate-900 {
+  background-color: #ffffff !important; /* clean white card blocks */
+}
+:root.light-theme .bg-slate-850 {
+  background-color: #f1f5f9 !important; /* secondary card/panels elements */
+}
+:root.light-theme .bg-slate-800 {
+  background-color: #e2e8f0 !important; /* border or tag background style */
+}
+
+/* Custom opacity backdrops dynamic overrides */
+:root.light-theme .bg-slate-950\/80 {
+  background-color: rgba(248, 250, 252, 0.8) !important;
+}
+:root.light-theme .bg-slate-950\/60 {
+  background-color: rgba(248, 250, 252, 0.6) !important;
+}
+:root.light-theme .bg-slate-900\/40,
+:root.light-theme .bg-slate-950\/40 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: #e2e8f0 !important;
+}
+:root.light-theme .bg-slate-900\/10,
+:root.light-theme .bg-slate-950\/10 {
+  background-color: rgba(148, 163, 184, 0.1) !important;
+}
+
+/* Colorful soft tints and frames overrides */
+:root.light-theme .bg-emerald-500\/5,
+:root.light-theme .bg-emerald-400\/5 {
+  background-color: rgba(0, 165, 114, 0.05) !important;
+}
+:root.light-theme .bg-emerald-500\/10,
+:root.light-theme .bg-emerald-400\/10 {
+  background-color: rgba(0, 165, 114, 0.08) !important;
+}
+:root.light-theme .bg-indigo-500\/5,
+:root.light-theme .bg-indigo-400\/5 {
+  background-color: rgba(79, 70, 229, 0.05) !important;
+}
+:root.light-theme .bg-indigo-505\/10,
+:root.light-theme .bg-indigo-505\/10,
+:root.light-theme .bg-indigo-500\/10,
+:root.light-theme .bg-indigo-400\/10 {
+  background-color: rgba(79, 70, 229, 0.08) !important;
+}
+:root.light-theme .bg-cyan-500\/10,
+:root.light-theme .bg-cyan-400\/10 {
+  background-color: rgba(0, 158, 185, 0.08) !important;
+}
+:root.light-theme .bg-amber-500\/10,
+:root.light-theme .bg-amber-400\/10 {
+  background-color: rgba(180, 83, 9, 0.08) !important;
+}
+:root.light-theme .bg-rose-500\/10,
+:root.light-theme .bg-rose-400\/10 {
+  background-color: rgba(190, 18, 60, 0.08) !important;
+}
+
+/* Absolute Global Border overrides: Make lines sharp and perfectly visible */
+:root.light-theme .border-slate-950 { border-color: #cbd5e1 !important; }
+:root.light-theme .border-slate-900 { border-color: #cbd5e1 !important; }
+:root.light-theme .border-slate-850 { border-color: #e2e8f0 !important; }
+:root.light-theme .border-slate-800 { border-color: #e2e8f0 !important; }
+:root.light-theme .border-slate-700 { border-color: #cbd5e1 !important; }
+:root.light-theme .border-emerald-500\/10,
+:root.light-theme .border-emerald-500\/20,
+:root.light-theme .border-emerald-500\/30,
+:root.light-theme .border-emerald-400\/10,
+:root.light-theme .border-emerald-400\/20 {
+  border-color: rgba(0, 165, 114, 0.25) !important;
+}
+:root.light-theme .border-indigo-500\/10,
+:root.light-theme .border-indigo-500\/20,
+:root.light-theme .border-indigo-500\/30,
+:root.light-theme .border-indigo-400\/10,
+:root.light-theme .border-indigo-400\/20 {
+  border-color: rgba(79, 70, 229, 0.25) !important;
+}
+:root.light-theme .border-cyan-500\/10,
+:root.light-theme .border-cyan-400\/10,
+:root.light-theme .border-cyan-500\/20 {
+  border-color: rgba(0, 158, 185, 0.25) !important;
+}
+:root.light-theme .border-amber-500\/10,
+:root.light-theme .border-amber-400\/10,
+:root.light-theme .border-amber-500\/20 {
+  border-color: rgba(180, 83, 9, 0.25) !important;
+}
+
+/* Menubars and navigation elements */
+:root.light-theme #desktop-menubar {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+:root.light-theme #desktop-menubar button {
+  color: #475569 !important;
+}
+:root.light-theme #desktop-menubar button[id*="active"], 
+:root.light-theme #desktop-menubar button.bg-emerald-500\/10 {
+  color: #00875c !important; /* Keep emerald active text */
+  background-color: rgba(0, 165, 114, 0.08) !important;
+  border-color: rgba(0, 165, 114, 0.15) !important;
+}
+
+/* Secondary Button designs overrides */
+:root.light-theme #hero-secondary-btn {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+:root.light-theme #hero-secondary-btn:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
+}
+:root.light-theme #hero-verify-btn {
+  background-color: rgba(0, 165, 114, 0.04) !important;
+  border-color: rgba(0, 165, 114, 0.15) !important;
+  color: #00875c !important;
+}
+:root.light-theme #hero-verify-btn:hover {
+  background-color: rgba(0, 165, 114, 0.08) !important;
+  border-color: rgba(0, 165, 114, 0.3) !important;
+}
+
+/* Coding terminal / Coding Playground Card: Keep them look authentic AND dark in BOTH modes */
+:root.light-theme .coding-terminal-box,
+:root.light-theme #terminal-card,
+:root.light-theme #main-terminal-body,
+:root.light-theme #main-terminal-body.premium-card {
+  background-color: #0d0d12 !important;
+  background: #0d0d12 !important;
+  border-color: #1a1a24 !important;
+}
+:root.light-theme .coding-terminal-box *,
+:root.light-theme .coding-terminal-box .text-white,
+:root.light-theme #terminal-card *,
+:root.light-theme #terminal-card .text-white,
+:root.light-theme #main-terminal-body *,
+:root.light-theme #main-terminal-body .text-white {
+  color: #e4e1e9 !important;
+}
+:root.light-theme .coding-terminal-box span,
+:root.light-theme .coding-terminal-box p,
+:root.light-theme .coding-terminal-box code,
+:root.light-theme .coding-terminal-box input,
+:root.light-theme #terminal-card span,
+:root.light-theme #terminal-card p,
+:root.light-theme #terminal-card code,
+:root.light-theme #terminal-card input,
+:root.light-theme #main-terminal-body span,
+:root.light-theme #main-terminal-body p,
+:root.light-theme #main-terminal-body code,
+:root.light-theme #main-terminal-body input {
+  color: inherit !important;
+}
+:root.light-theme .coding-terminal-box button,
+:root.light-theme #terminal-card button,
+:root.light-theme #main-terminal-body button {
+  background-color: #13131a !important;
+  border-color: #1a1a24 !important;
+  color: #a4a1a9 !important;
+}
+:root.light-theme .coding-terminal-box button:hover,
+:root.light-theme #terminal-card button:hover,
+:root.light-theme #main-terminal-body button:hover {
+  background-color: #1b1b24 !important;
+  color: #34d399 !important;
+  border-color: rgba(0, 165, 114, 0.3) !important;
+}
+:root.light-theme .coding-terminal-box input::placeholder,
+:root.light-theme #terminal-card input::placeholder,
+:root.light-theme #main-terminal-body input::placeholder {
+  color: #55535d !important;
+}
+:root.light-theme .coding-terminal-box,
+:root.light-theme #terminal-card,
+:root.light-theme #main-terminal-body,
+:root.light-theme .coding-terminal-box *,
+:root.light-theme #terminal-card *,
+:root.light-theme #main-terminal-body * {
+  border-color: #1c1c24 !important;
+}
+:root.light-theme .coding-terminal-box .text-emerald-400,
+:root.light-theme #terminal-card .text-emerald-400,
+:root.light-theme #main-terminal-body .text-emerald-400,
+:root.light-theme .coding-terminal-box .text-emerald-500,
+:root.light-theme #terminal-card .text-emerald-500,
+:root.light-theme #main-terminal-body .text-emerald-500 {
+  color: #34d399 !important;
+}
+:root.light-theme .coding-terminal-box .text-cyan-400,
+:root.light-theme #terminal-card .text-cyan-400,
+:root.light-theme #main-terminal-body .text-cyan-400 {
+  color: #22d3ee !important;
+}
+:root.light-theme .coding-terminal-box .text-indigo-400,
+:root.light-theme #terminal-card .text-indigo-400,
+:root.light-theme #main-terminal-body .text-indigo-400 {
+  color: #818cf8 !important;
+}
+:root.light-theme .coding-terminal-box .text-amber-400,
+:root.light-theme #terminal-card .text-amber-400,
+:root.light-theme #main-terminal-body .text-amber-400 {
+  color: #fbbf24 !important;
+}
+
+/* Premium card hover overrides for light mode */
+:root.light-theme .premium-card {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 10px 25px -5px rgba(148, 163, 184, 0.05), 0 4px 10px -3px rgba(148, 163, 184, 0.03) !important;
+}
+:root.light-theme .premium-card::before {
+  background: linear-gradient(90deg, rgba(0, 165, 114, 0.1) 0%, rgba(0, 165, 114, 0) 100%) !important;
+}
+:root.light-theme .premium-list-item:hover {
+  background-color: rgba(148, 163, 184, 0.05) !important;
+}
+
+/* Specific interactive badges and elements */
+:root.light-theme #logo-brand span.text-white {
+  color: #0f172a !important;
+}
+:root.light-theme #top-profile-badge {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+:root.light-theme #top-profile-badge span.text-white {
+  color: #0f172a !important;
+}
+
+/* Global SVG/Icons override: slightly enhance contrast and drop-shadow in light mode */
+:root.light-theme svg {
+  filter: drop-shadow(0 0.5px 0.5px rgba(0,0,0,0.05));
+}
+
+/* Custom contrast overrides for Admin Panel form fields inside Light Theme */
+:root.light-theme #admin-panel-container input,
+:root.light-theme #admin-panel-container select,
+:root.light-theme #admin-panel-container textarea {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+:root.light-theme #admin-panel-container input::placeholder,
+:root.light-theme #admin-panel-container textarea::placeholder {
+  color: #64748b !important;
+}
+
+:root.light-theme #admin-panel-container input:focus,
+:root.light-theme #admin-panel-container select:focus,
+:root.light-theme #admin-panel-container textarea:focus {
+  border-color: #4f46e5 !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+}
+
+/* Explicit high-contrast styles for Quick Test Accreditation buttons in Light Mode */
+:root.light-theme #btn-quick-super {
+  background-color: #eef2ff !important;
+  border-color: #818cf8 !important;
+  color: #4f46e5 !important;
+}
+:root.light-theme #btn-quick-super:hover {
+  background-color: #e0e7ff !important;
+  border-color: #4f46e5 !important;
+  color: #3730a3 !important;
+}
+
+:root.light-theme #btn-quick-lvl1 {
+  background-color: #ecfdf5 !important;
+  border-color: #34d399 !important;
+  color: #059669 !important;
+}
+:root.light-theme #btn-quick-lvl1:hover {
+  background-color: #d1fae5 !important;
+  border-color: #059669 !important;
+  color: #047857 !important;
+}
+
+:root.light-theme #btn-quick-mem {
+  background-color: #fffbeb !important;
+  border-color: #fbbf24 !important;
+  color: #d97706 !important;
+}
+:root.light-theme #btn-quick-mem:hover {
+  background-color: #fef3c7 !important;
+  border-color: #d97706 !important;
+  color: #b45309 !important;
+}
+
+
